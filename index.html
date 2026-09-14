@@ -19,9 +19,9 @@
         },
         colors: {
           brand: {
-            DEFAULT: '#FF6600',
-            dark: '#E65C00',
-            light: '#FFF1E6',
+            DEFAULT: '#2563EB',
+            dark: '#1D4ED8',
+            light: '#EFF6FF',
           },
           ink: '#17181A',
           bg: '#F9F9F9',
@@ -46,7 +46,7 @@
   }
 
   .underline-brand {
-    background-image: linear-gradient(to right, #FF6600, #FF6600);
+    background-image: linear-gradient(to right, #39FF14, #39FF14);
     background-repeat: no-repeat;
     background-size: 100% 0.3em;
     background-position: 0 88%;
@@ -84,9 +84,147 @@
 
   a:focus-visible,
   button:focus-visible {
-    outline: 2px solid #FF6600;
+    outline: 2px solid #2563EB;
     outline-offset: 2px;
   }
+
+  /* Cards das áreas do ENEM */
+  .materia-card {
+    border: 2px solid transparent;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, opacity 0.35s ease;
+    transform-origin: center;
+  }
+
+  .materia-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .materia-card.selecionado {
+    transform: translateY(-12px) scale(1.025);
+    border-color: #2563EB;
+    box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.30), 0 0 0 4px rgba(37, 99, 235, 0.08);
+    opacity: 1;
+    z-index: 10;
+  }
+
+  #materias-grid:has(.materia-card.selecionado) .materia-card:not(.selecionado) {
+    opacity: 0.86;
+  }
+
+  @media (max-width: 1023px) {
+    .materia-card.selecionado {
+      transform: translateY(-8px) scale(1.015);
+    }
+  }
+
+  /* Pilha de livros do card Linguagens e Códigos */
+  .livro-linguagens {
+    transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), filter 0.5s ease;
+    transform-origin: center bottom;
+  }
+
+  .livro-esquerda {
+    transform: translateX(-42px) translateY(14px) rotate(-6deg) scale(.94);
+  }
+
+  .livro-direita {
+    transform: translateX(42px) translateY(14px) rotate(6deg) scale(.94);
+  }
+
+  .livro-principal {
+    transform: translateY(0) scale(1);
+  }
+
+  .linguagens-card.selecionado .livro-esquerda {
+    transform: translateX(-65px) translateY(10px) rotate(-10deg) scale(.96);
+  }
+
+  .linguagens-card.selecionado .livro-direita {
+    transform: translateX(65px) translateY(10px) rotate(10deg) scale(.96);
+  }
+
+  .linguagens-card.selecionado .livro-principal {
+    transform: translateY(-5px) scale(1.03);
+  }
+
+
+  /* Pilha de livros do card Ciências Humanas */
+  .livro-humanas {
+    position: absolute;
+    transform-origin: center bottom;
+    transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), filter 0.5s ease;
+  }
+
+  .humanas-geografia {
+    transform: translateX(-58px) translateY(16px) rotate(-9deg) scale(.92);
+    z-index: 10;
+  }
+
+  .humanas-filosofia {
+    transform: translateX(58px) translateY(16px) rotate(9deg) scale(.92);
+    z-index: 10;
+  }
+
+  .humanas-sociologia {
+    transform: translateX(30px) translateY(8px) rotate(4deg) scale(.96);
+    z-index: 20;
+  }
+
+  .humanas-historia {
+    transform: translateY(0) scale(1);
+    z-index: 30;
+  }
+
+  .humanas-card.selecionado .humanas-geografia {
+    transform: translateX(-76px) translateY(12px) rotate(-12deg) scale(.94);
+  }
+
+  .humanas-card.selecionado .humanas-filosofia {
+    transform: translateX(76px) translateY(12px) rotate(12deg) scale(.94);
+  }
+
+  .humanas-card.selecionado .humanas-sociologia {
+    transform: translateX(42px) translateY(5px) rotate(6deg) scale(.97);
+  }
+
+  .humanas-card.selecionado .humanas-historia {
+    transform: translateY(-5px) scale(1.03);
+  }
+
+  /* Pilha de livros do card Ciências da Natureza */
+  .livro-natureza {
+    position: absolute;
+    transform-origin: center bottom;
+    transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), filter 0.5s ease;
+  }
+
+  .natureza-biologia {
+    transform: translateX(-45px) translateY(14px) rotate(-7deg) scale(.94);
+    z-index: 10;
+  }
+
+  .natureza-fisica {
+    transform: translateX(45px) translateY(14px) rotate(7deg) scale(.94);
+    z-index: 20;
+  }
+
+  .natureza-quimica {
+    transform: translateY(0) scale(1);
+    z-index: 30;
+  }
+
+  .natureza-card.selecionado .natureza-biologia {
+    transform: translateX(-67px) translateY(10px) rotate(-11deg) scale(.96);
+  }
+
+  .natureza-card.selecionado .natureza-fisica {
+    transform: translateX(67px) translateY(10px) rotate(11deg) scale(.96);
+  }
+
+  .natureza-card.selecionado .natureza-quimica {
+    transform: translateY(-5px) scale(1.03);
+  }
+
 </style>
 </head>
 
@@ -97,7 +235,7 @@
     <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-2 text-center">
       <span>🔥</span>
       <span class="font-medium">OFERTA DE LANÇAMENTO TERMINA EM</span>
-      <span id="countdown" class="font-bold text-brand tabular-nums">01:56:34</span>
+      <span id="countdown" class="font-bold text-[#FF6600] tabular-nums">01:56:34</span>
     </div>
   </div>
 
@@ -153,15 +291,7 @@
         </div>
         <p class="hero-fade hero-fade-4 mt-3 text-sm text-ink/50">Acesso imediato • 7 dias de garantia</p>
 
-        <!-- Prova social ajustada -->
-        <div class="hero-fade hero-fade-5 mt-8 flex items-center gap-3">
-          <div class="avatar-stack flex">
-            <span class="w-9 h-9 rounded-full bg-amber-400 border-2 border-bg"></span>
-            <span class="w-9 h-9 rounded-full bg-brand border-2 border-bg"></span>
-            <span class="w-9 h-9 rounded-full bg-ink border-2 border-bg"></span>
-          </div>
-        </div>
-        <div class="hero-fade hero-fade-5 mt-3 inline-flex items-center gap-2 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2 text-xs sm:text-sm font-semibold text-brand">
+        <div class="hero-fade hero-fade-5 mt-8 inline-flex items-center gap-2 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2 text-xs sm:text-sm font-semibold text-brand">
           <svg class="w-4 h-4 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
           </svg>
@@ -180,29 +310,34 @@
             <span class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-sm font-extrabold">S</span>
           </div>
 
-          <div class="space-y-5">
-            <div>
-              <div class="flex justify-between text-xs text-white/50 mb-1.5">
-                <span>Matemática</span>
-                <span>p. 12</span>
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+            <p class="text-[11px] uppercase tracking-[0.18em] font-bold text-white/40 mb-3">Como aproveitar o material</p>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-lg bg-brand/20 text-brand flex items-center justify-center text-xs font-black shrink-0">1</span>
+                <div>
+                  <p class="text-sm font-semibold">Revise por matéria</p>
+                  <p class="text-xs text-white/50 mt-0.5">Vá direto aos tópicos que mais precisa reforçar.</p>
+                </div>
               </div>
-              <div class="h-2 rounded-full bg-white/10 overflow-hidden">
-                <div class="progress-bar-fill h-full rounded-full bg-brand" style="width: 42%;"></div>
+              <div class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-lg bg-brand/20 text-brand flex items-center justify-center text-xs font-black shrink-0">2</span>
+                <div>
+                  <p class="text-sm font-semibold">Marque os pontos-chave</p>
+                  <p class="text-xs text-white/50 mt-0.5">Use o resumo como revisão rápida antes dos exercícios.</p>
+                </div>
               </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between text-xs text-white/50 mb-1.5">
-                <span>Redação</span>
-                <span>p. 88</span>
-              </div>
-              <div class="h-2 rounded-full bg-white/10 overflow-hidden">
-                <div class="progress-bar-fill h-full rounded-full bg-brand" style="width: 78%;"></div>
+              <div class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-lg bg-brand/20 text-brand flex items-center justify-center text-xs font-black shrink-0">3</span>
+                <div>
+                  <p class="text-sm font-semibold">Aplique as técnicas</p>
+                  <p class="text-xs text-white/50 mt-0.5">Use as dicas abaixo para ganhar tempo e estratégia.</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="mt-7 rounded-xl bg-white/5 border border-white/10 p-4 transition-all duration-300" id="tech-box">
+          <div class="mt-5 rounded-xl bg-white/5 border border-white/10 p-4 transition-all duration-300" id="tech-box">
             <p id="tech-title" class="text-[11px] font-bold text-brand tracking-wide mb-1">TIP 01</p>
             <p id="tech-desc" class="text-sm text-white/80 leading-snug">Regra de três: interpretação de padrões de recorrência na prova.</p>
           </div>
@@ -212,7 +347,7 @@
     </div>
   </section>
 
-  <!-- ============ NOVA SEÇÃO COMPLETA DE RESUMOS (FUNDO LARANJA DE PONTA A PONTA) ============ -->
+  <!-- ============ NOVA SEÇÃO COMPLETA DE RESUMOS (FUNDO AZUL DE PONTA A PONTA) ============ -->
   <section id="conteudo" class="bg-gradient-to-b from-brand via-brand to-brand-dark text-white py-24 border-t border-black/10 shadow-inner">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
@@ -223,451 +358,476 @@
         </h2>
       </div>
 
-      <!-- Grid com as 11 Disciplinas -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-8 pt-8">
+      
+      <!-- Grid com as 4 Disciplinas -->
+      <div id="materias-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-20 gap-x-5 pt-8 items-stretch">
+      
+     <!-- MATEMÁTICA -->
+<div class="materia-card selecionado bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-44 mt-4 cursor-pointer" onclick="selecionarMateria(this)">
 
-        <!-- 01. BIOLOGIA -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
+  <!-- IMAGEM -->
+  <div class="absolute -top-16 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
+    <img
+      src="images/matematica.svg"
+      alt="Livro de Matemática"
+      class="h-56 w-auto object-contain drop-shadow-xl"
+    >
+  </div>
+
+  <div>
+    <h3 class="text-xl font-extrabold text-center mb-2">
+      Matemática
+    </h3>
+
+    <p class="text-xs text-ink/70 leading-relaxed text-center">
+      Matemática Básica, Geometria Plana e Espacial, Estatística,
+      Funções, Probabilidade e Análise Combinatória.
+      Fórmulas prontas e atalhos de raciocínio lógico.
+    </p>
+  </div>
+
+  <div class="mt-5">
+
+    <p class="text-xs font-bold text-ink/80 text-center mb-3">
+      
+    </p>
+
+    <details class="group border-t border-black/10 pt-3">
+
+      <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
+        <span>▶ Ver tópicos abordados</span>
+      </summary>
+
+      <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
+        <li>• Razão, Proporção e Matemática Básica</li>
+        <li>• Geometria Plana e Espacial</li>
+        <li>• Estatística, Média e Probabilidade</li>
+        <li>• Funções (1º, 2º grau e Exponencial)</li>
+      </ul>
+
+    </details>
+
+  </div>
+
+</div>
+
+
+<!-- CIÊNCIAS HUMANAS -->
+<div class="materia-card humanas-card bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-44 mt-4 cursor-pointer" onclick="selecionarMateria(this)">
+
+  <!-- LIVROS EMPILHADOS -->
+  <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-full h-60 flex items-start justify-center pointer-events-none">
+
+    <!-- Geografia - atrás à esquerda -->
+    <img
+      src="images/geografia.svg"
+      alt="Livro de Geografia"
+      class="livro-humanas humanas-geografia h-52 w-auto object-contain drop-shadow-lg"
+    >
+
+    <!-- Filosofia - atrás à direita -->
+    <img
+      src="images/filosofia.svg"
+      alt="Livro de Filosofia"
+      class="livro-humanas humanas-filosofia h-52 w-auto object-contain drop-shadow-lg"
+    >
+  
+    <!-- História - principal -->
+    <img
+      src="images/filosofia.svg"
+      alt="Livro de História"
+      class="livro-humanas humanas-historia h-56 w-auto object-contain drop-shadow-xl"
+    >
+
+  </div>
+
+  <div>
+    <h3 class="text-xl font-extrabold text-center mb-2">
+      Ciências Humanas
+    </h3>
+
+    <p class="text-xs text-ink/70 leading-relaxed text-center">
+      História, Geografia, Filosofia e Sociologia reunidas em resumos estratégicos
+      para revisar os principais acontecimentos, conceitos sociais, políticos,
+      econômicos e geográficos cobrados no ENEM.
+    </p>
+  </div>
+
+  <div class="mt-5">
+
+    <p class="text-xs font-bold text-ink/80 text-center mb-3"></p>
+
+    <details class="group border-t border-black/10 pt-3">
+
+      <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
+        <span>▶ Ver tópicos abordados</span>
+      </summary>
+
+      <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
+        <li>• História do Brasil e História Geral</li>
+        <li>• Geografia Física e Humana</li>
+        <li>• Geopolítica e Atualidades</li>
+        <li>• Filosofia</li>
+        <li>• Sociologia</li>
+      </ul>
+
+    </details>
+
+  </div>
+
+</div>
+
+<!-- LINGUAGENS E CÓDIGOS -->
+<div class="materia-card linguagens-card bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-44 mt-4 cursor-pointer" onclick="selecionarMateria(this)">
+
+  <!-- LIVROS EMPILHADOS -->
+  <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-full h-60 flex items-start justify-center pointer-events-none">
+
+    <!-- Livro atrás - esquerda -->
+    <img
+      src="images/artes.svg"
+      alt="Livro de Artes"
+      class="livro-linguagens livro-esquerda absolute h-52 w-auto object-contain drop-shadow-lg z-10"
+    >
+
+    <!-- Livro atrás - direita -->
+    <img
+      src="images/ingles.svg"
+      alt="Livro de Literatura"
+      class="livro-linguagens livro-direita absolute h-52 w-auto object-contain drop-shadow-lg z-20"
+    >
+
+    <!-- Livro principal -->
+    <img
+      src="images/portugues.svg"
+      alt="Livro de Português"
+      class="livro-linguagens livro-principal absolute h-56 w-auto object-contain drop-shadow-xl z-30"
+    >
+
+  </div>
+
+  <div>
+    <h3 class="text-xl font-extrabold text-center mb-2">
+      Linguagens e Códigos
+    </h3>
+
+    <p class="text-xs text-ink/70 leading-relaxed text-center">
+      Foco no que o ENEM cobra: Interpretação de texto, coesão, coerência,
+      funções da linguagem, semântica, variação linguística e regras
+      gramaticais aplicadas.
+    </p>
+  </div>
+
+  <div class="mt-5">
+
+    <p class="text-xs font-bold text-ink/80 text-center mb-3">
+      
+    </p>
+
+    <details class="group border-t border-black/10 pt-3">
+
+      <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
+        <span>▶ Ver tópicos abordados</span>
+      </summary>
+
+      <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
+        <li>• Funções da Linguagem e Gêneros Textuais</li>
+        <li>• Interpretação e Coesão Textual</li>
+        <li>• Variedade Linguística</li>
+        <li>• Sintaxe, Concordância e Crase</li>
+      </ul>
+
+    </details>
+
+  </div>
+
+</div>
+
+
+<!-- CIÊNCIAS DA NATUREZA -->
+<div class="materia-card natureza-card bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-44 mt-4 cursor-pointer" onclick="selecionarMateria(this)">
+
+  <!-- LIVROS EMPILHADOS -->
+  <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-full h-60 flex items-start justify-center pointer-events-none">
+
+    <!-- Biologia - atrás à esquerda -->
+    <img
+      src="images/biologia.svg"
+      alt="Livro de Biologia"
+      class="livro-natureza natureza-biologia h-52 w-auto object-contain drop-shadow-lg"
+    >
+
+    <!-- Física - atrás à direita -->
+    <img
+      src="images/fisica.svg"
+      alt="Livro de Física"
+      class="livro-natureza natureza-fisica h-52 w-auto object-contain drop-shadow-lg"
+    >
+
+    <!-- Química - principal -->
+    <img
+      src="images/quimica.svg"
+      alt="Livro de Química"
+      class="livro-natureza natureza-quimica h-56 w-auto object-contain drop-shadow-xl"
+    >
+
+  </div>
+
+  <div>
+    <h3 class="text-xl font-extrabold text-center mb-2">
+      Ciências da Natureza
+    </h3>
+
+    <p class="text-xs text-ink/70 leading-relaxed text-center">
+      Biologia, Física e Química reunidas em resumos estratégicos.
+      Revise conceitos, fórmulas, fenômenos naturais e os principais
+      conteúdos cobrados no ENEM.
+    </p>
+  </div>
+
+  <div class="mt-5">
+
+    <p class="text-xs font-bold text-ink/80 text-center mb-3"></p>
+
+    <details class="group border-t border-black/10 pt-3">
+
+      <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
+        <span>▶ Ver tópicos abordados</span>
+      </summary>
+
+      <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
+        <li>• Biologia, Citologia e Genética</li>
+        <li>• Fisiologia, Evolução e Ecologia</li>
+        <li>• Química Geral e Inorgânica</li>
+        <li>• Química Orgânica e Físico-Química</li>
+        <li>• Cinemática e Dinâmica</li>
+        <li>• Termodinâmica e Ondulatória</li>
+        <li>• Eletricidade, Magnetismo e Óptica</li>
+      </ul>
+
+    </details>
+
+  </div>
+
+</div>
+        
+</div>
+  </section>
+<!-- ============ PREÇOS / PLANOS ============ -->
+  <section id="preco" class="bg-[#EAF2FB] py-20 sm:py-24 border-t border-black/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+      <!-- Título -->
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#06163A]">
+          Invista na sua aprovação
+        </h2>
+
+        <p class="mt-4 text-base sm:text-lg text-[#5B6F92]">
+          Dois formatos para você começar a estudar com mais foco e organização.
+        </p>
+      </div>
+
+      <!-- Grid dos planos -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-7 items-stretch">
+
+        <!-- =========================
+             PLANO 1 — CHECKLIST
+        ========================== -->
+        <div class="bg-white rounded-[26px] border-2 border-[#D8E0EA] shadow-sm p-7 sm:p-10 flex flex-col min-h-[640px]">
+
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-2xl font-extrabold text-[#06163A] leading-tight">
+                Checklist ENEM 2026
+              </h3>
+
+              <p class="mt-2 text-sm sm:text-base text-[#5B6F92]">
+                Checklist prático para organizar seus estudos.
+              </p>
+            </div>
+
+            <span class="shrink-0 rounded-full bg-[#E6F0FB] text-[#315A8A] px-4 py-2 text-sm font-semibold">
+              Básico
+            </span>
+          </div>
+
+          <!-- Preço -->
+          <div class="mt-7">
+            <div class="flex items-end gap-2 flex-wrap">
+              <span class="text-4xl sm:text-5xl font-black text-[#06163A] leading-none">
+                R$ 14,90
+              </span>
+
+              <span class="text-base text-[#5B6F92] mb-1">
+                / único
+              </span>
             </div>
           </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Biologia</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Resumos completos sobre Bioquímica, Citologia, Fisiologia, Genética, Evolução e Ecologia. Explore sistemas do corpo humano, ciclos naturais e processos celulares.
-            </p>
+
+          <!-- Benefícios -->
+          <ul class="mt-8 space-y-5 text-[#06163A] text-base">
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Conteúdos por área
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Checklist de redação
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Painel simples de progresso
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              PDF imprimível
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Acesso imediato
+            </li>
+
+          </ul>
+
+          <!-- Botão -->
+          <div class="mt-auto pt-10">
+            <a
+              href="https://pay.kiwify.com.br/1IIY8Cm"
+              class="w-full rounded-2xl border-2 border-brand text-brand font-bold text-base py-4 flex items-center justify-center hover:bg-brand hover:text-white transition-colors"
+            >
+              Quero o Checklist
+            </a>
           </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 108 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Bioquímica & Citologia</li>
-                <li>• Fisiologia Humana</li>
-                <li>• Genética e Evolução</li>
-                <li>• Ecologia e Sustentabilidade</li>
-              </ul>
-            </details>
-          </div>
+
         </div>
 
-        <!-- 02. FÍSICA -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Física</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Resumos essenciais abordando Cinemática, Dinâmica, Termodinâmica, Eletrostática e Gravitação Universal. Explore calor, forças, ondas e eletromagnetismo.
-            </p>
-          </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 51 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Cinemática & Dinâmica</li>
-                <li>• Termodinâmica</li>
-                <li>• Eletrostática e Magnetismo</li>
-                <li>• Ondulatória e Óptica</li>
-              </ul>
-            </details>
-          </div>
-        </div>
 
-        <!-- 03. QUÍMICA -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Química</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Resumos claros sobre Química Orgânica e Inorgânica, Cinética, Termoquímica e Eletroquímica. Domine ligações químicas, equilíbrio, gases e estequiometria.
-            </p>
-          </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 61 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Química Geral e Inorgânica</li>
-                <li>• Físico-Química e Termoquímica</li>
-                <li>• Química Orgânica</li>
-                <li>• Soluções e Equilíbrio</li>
-              </ul>
-            </details>
-          </div>
-        </div>
+        <!-- =========================
+             PLANO 2 — COMPLETO
+        ========================== -->
+        <div class="relative bg-white rounded-[26px] border-2 border-brand shadow-xl shadow-brand/10 p-7 sm:p-10 flex flex-col min-h-[640px]">
 
-        <!-- 04. GEOGRAFIA -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-            </div>
+          <!-- Mais escolhido -->
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+            <span class="inline-flex items-center rounded-full bg-[#FFC928] text-[#111827] px-5 py-2 text-sm font-extrabold shadow-md whitespace-nowrap">
+              Mais escolhido
+            </span>
           </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Geografia</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Resumos completos sobre clima, relevo, hidrografia e vegetação, além de conceitos focados em globalização, geopolítica e matrizes energéticas do mundo.
-            </p>
-          </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 42 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Geografia Física (Clima, Relevo)</li>
-                <li>• Geopolítica e Conflitos</li>
-                <li>• Globalização e Indústria</li>
-                <li>• População e Urbanização</li>
-              </ul>
-            </details>
-          </div>
-        </div>
 
-        <!-- 05. HISTÓRIA -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">História</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Da História Antiga à Idade Contemporânea, incluindo Revoluções, Guerras Mundiais e Guerra Fria. Abrange a História do Brasil desde a Colônia até a Nova República.
-            </p>
-          </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 37 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Antiguidade e Idade Média</li>
-                <li>• História Contemporânea (Guerras)</li>
-                <li>• Brasil Colônia e Império</li>
-                <li>• Brasil República e Era Vargas</li>
-              </ul>
-            </details>
-          </div>
-        </div>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-2xl font-extrabold text-[#06163A] leading-tight">
+                Plano Completo ENEM 2026
+              </h3>
 
-        <!-- 06. FILOSOFIA -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
+              <p class="mt-2 text-sm sm:text-base text-[#5B6F92]">
+                Tudo do checklist + planejamento total até a prova.
+              </p>
             </div>
-          </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Filosofia</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Resumos sobre Epistemologia, Ética e Filosofia Política. Pensadores antigos, medievais, modernos e contemporâneos como Sócrates, Kant, Maquiavel e Nietzsche.
-            </p>
-          </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 26 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Filosofia Antiga (Grécia)</li>
-                <li>• Racionalismo e Empirismo</li>
-                <li>• Ética e Moral</li>
-                <li>• Filosofia Política e Contratualistas</li>
-              </ul>
-            </details>
-          </div>
-        </div>
 
-        <!-- 07. SOCIOLOGIA -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-            </div>
+            <span class="shrink-0 rounded-full bg-brand text-white px-4 py-2 text-sm font-semibold">
+              Completo
+            </span>
           </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Sociologia</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Origem da disciplina e teóricos clássicos (Marx, Durkheim e Weber). Explora temas como cidadania, trabalho, estratificação social, direitos humanos e cultura.
-            </p>
-          </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 12 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Os Três Porquinhos (Marx, Weber, Durkheim)</li>
-                <li>• Movimentos Sociais e Cidadania</li>
-                <li>• Cultura, Identidade e Indústria Cultural</li>
-                <li>• Mundo do Trabalho e Desigualdade</li>
-              </ul>
-            </details>
-          </div>
-        </div>
 
-        <!-- 08. ARTES -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Artes</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Da Arte Pré-Histórica às Vanguardas Europeias e movimentos modernos. Inclui estudo da Semana de 22, Arte Contemporânea e análise de linguagens visuais.
-            </p>
-          </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 40 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• História da Arte Mundial</li>
-                <li>• Vanguardas Europeias</li>
-                <li>• Modernismo no Brasil (Semana de 22)</li>
-                <li>• Elementos Básicos da Composição Visual</li>
-              </ul>
-            </details>
-          </div>
-        </div>
+          <!-- Preço -->
+          <div class="mt-7">
+            <div class="flex items-end gap-2 flex-wrap">
+              <span class="text-4xl sm:text-5xl font-black text-brand leading-none">
+                R$ 29,90
+              </span>
 
-        <!-- 09. LITERATURA -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
+              <span class="text-base text-[#5B6F92] mb-1">
+                / único
+              </span>
             </div>
-          </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Literatura</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Estudo profundo das escolas literárias do Trovadorismo ao Modernismo e obras contemporâneas. Análise de Machado de Assis, Geração de 30 e Concretismo.
-            </p>
-          </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 18 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Escolas Literárias (Trovadorismo ao Realismo)</li>
-                <li>• Romantismo no Brasil</li>
-                <li>• Modernismo (1ª, 2ª e 3ª Fases)</li>
-                <li>• Figuras de Linguagem em Textos Literários</li>
-              </ul>
-            </details>
-          </div>
-        </div>
 
-        <!-- 10. PORTUGUÊS -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Português</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Foco no que o ENEM cobra: Interpretação de texto, coesão, coerência, funções da linguagem, semântica, variação linguística e regras gramaticais aplicadas.
+            <p class="mt-3 text-[#198A00] text-sm font-bold">
+              Melhor custo-benefício
             </p>
           </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 18 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Funções da Linguagem e Gêneros Textuais</li>
-                <li>• Interpretação e Coesão Textual</li>
-                <li>• Variedade Linguística</li>
-                <li>• Sintaxe, Concordância e Crase</li>
-              </ul>
-            </details>
-          </div>
-        </div>
 
-        <!-- 11. MATEMÁTICA -->
-        <div class="bg-white text-ink rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative pt-20 mt-4">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center justify-center w-full">
-            <div class="relative w-48 h-24 flex justify-center items-end">
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md -rotate-12 -translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-24 bg-white border border-black/10 rounded-md shadow-xl z-10 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-              <div class="w-16 h-20 bg-white border border-black/10 rounded-md shadow-md rotate-12 translate-x-8 translate-y-2 flex items-center justify-center text-[9px] text-ink/40 font-bold">Resumo</div>
-            </div>
+          <!-- Benefícios -->
+          <ul class="mt-7 space-y-4 text-[#06163A] text-base">
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Tudo do Checklist ENEM 2026
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Cronograma semanal de estudos
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Planner mensal
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Controle de revisões
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Controle de simulados
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Caderno de erros
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Plano de estudos completo
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Organização da redação
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              Metas semanais
+            </li>
+
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
+              BONUS >  REDAÇÕES NOTA 1000
+            </li>
+
+          </ul>
+
+          <!-- Botão -->
+          <div class="mt-auto pt-10">
+            <a
+              href="https://pay.kiwify.com.br/G5yMcDA"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full rounded-2xl bg-brand hover:bg-brand-dark text-white font-bold text-base py-4 flex items-center justify-center gap-2 shadow-lg shadow-brand/25 transition-colors"
+            >
+              Quero o Plano Completo
+            
+            </a>
           </div>
-          <div>
-            <h3 class="text-xl font-extrabold text-center mb-2">Matemática</h3>
-            <p class="text-xs text-ink/70 leading-relaxed text-center">
-              Matemática Básica, Geometria (Plana e Espacial), Estatística, Funções, Probabilidade e Análise Combinatória. Fórmulas prontas e atalhos de raciocínio lógico.
-            </p>
-          </div>
-          <div class="mt-5">
-            <p class="text-xs font-bold text-ink/80 text-center mb-3">📖 18 páginas</p>
-            <details class="group border-t border-black/10 pt-3">
-              <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
-                <span>▶ Ver tópicos abordados</span>
-              </summary>
-              <ul class="mt-3 space-y-1.5 text-xs text-ink/70 px-2 pb-1">
-                <li>• Razão, Proporção e Matemática Básica</li>
-                <li>• Geometria Plana e Espacial</li>
-                <li>• Estatística, Média e Probabilidade</li>
-                <li>• Funções (1º, 2º grau e Exponencial)</li>
-              </ul>
-            </details>
-          </div>
+
         </div>
 
       </div>
+
     </div>
   </section>
 
-  <!-- ============ PREÇO / OFERTA EXCLUSIVA ============ -->
-<section id="preco" class="bg-white py-20 sm:py-28 border-t border-black/5">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-
-    <!-- Título Principal -->
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-ink">
-        Aproveite o desconto<br class="hidden sm:block"> por tempo limitado!
-      </h2>
-    </div>
-
-    <!-- Card de Oferta -->
-    <div class="max-w-md mx-auto bg-white rounded-3xl border border-black/10 shadow-2xl overflow-hidden flex flex-col">
-      
-      <!-- Cabeçalho do Card (Laranja) -->
-      <div class="bg-brand py-5 text-center">
-        <h3 class="text-white font-black text-xl sm:text-2xl tracking-wider uppercase">Oferta Exclusiva</h3>
-      </div>
-
-      <!-- Conteúdo do Card (Lista de Benefícios) -->
-      <div class="p-8 pb-6">
-        <ul class="space-y-3.5 text-sm sm:text-base text-ink/80 font-medium">
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Acesso vitalício
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Biologia
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Física
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Química
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Geografia
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos História
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Filosofia
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Sociologia
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Artes
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Literatura
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Português
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Resumos Matemática
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-brand shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Garantia de 7 dias
-          </li>
-        </ul>
-      </div>
-
-      <!-- Bloco de Preço e CTA -->
-      <div class="p-8 pt-2 text-center mt-auto bg-white">
-        <p class="text-ink/50 text-sm sm:text-base font-semibold mb-1">
-          de <span class="line-through">R$ 134,00</span> por apenas
-        </p>
-        <p class="text-5xl sm:text-6xl font-black text-ink tracking-tight mb-2">
-          11x R$7,44
-        </p>
-        <p class="text-brand font-bold text-lg sm:text-xl mb-8">
-          ou R$ 67,00 à vista
-        </p>
-        
-        <a href="#" class="inline-flex items-center justify-center gap-2 rounded-full bg-brand hover:bg-brand-dark transition-colors text-white font-bold text-lg px-8 py-4 w-full shadow-xl shadow-brand/20">
-          Garantir acesso
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
 
   <!-- ============ AVISO INSTITUCIONAL E LEGAL ============ -->
   <section class="bg-[#141414] text-white/40 text-xs py-8 border-b border-white/5">
@@ -749,6 +909,14 @@
       boxEl.style.transition = 'opacity 0.3s ease-in-out';
       setInterval(rotateTechnique, 4000);
     }
+
+    // Seleção interativa dos cards de matérias
+    function selecionarMateria(card) {
+      const cards = document.querySelectorAll('.materia-card');
+      cards.forEach((item) => item.classList.remove('selecionado'));
+      card.classList.add('selecionado');
+    }
+
   </script>
 
 </body>
