@@ -234,8 +234,8 @@
   <div class="sticky top-0 z-50 bg-[#1A1A1A] text-white text-xs sm:text-sm">
     <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-2 text-center">
       <span>🔥</span>
-      <span class="font-medium">OFERTA DE LANÇAMENTO TERMINA EM</span>
-      <span id="countdown" class="font-bold text-[#FF6600] tabular-nums">01:56:34</span>
+      <span class="font-medium">O ENEM ESTÁ CHEGANDO — O TEMPO PARA SE PREPARAR ESTÁ ACABANDO</span>
+      <span id="countdown" class="font-bold text-[#FF6600] tabular-nums"></span>
     </div>
   </div>
 
@@ -394,7 +394,7 @@
 
     <details class="group border-t border-black/10 pt-3">
 
-      <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
+      <summary onclick="abrirTopicos(event, this)" class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
         <span>▶ Ver tópicos abordados</span>
       </summary>
 
@@ -459,7 +459,7 @@
 
     <details class="group border-t border-black/10 pt-3">
 
-      <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
+      <summary onclick="abrirTopicos(event, this)" class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
         <span>▶ Ver tópicos abordados</span>
       </summary>
 
@@ -526,7 +526,7 @@
 
     <details class="group border-t border-black/10 pt-3">
 
-      <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
+      <summary onclick="abrirTopicos(event, this)" class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
         <span>▶ Ver tópicos abordados</span>
       </summary>
 
@@ -591,7 +591,7 @@
 
     <details class="group border-t border-black/10 pt-3">
 
-      <summary class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
+      <summary onclick="abrirTopicos(event, this)" class="flex items-center justify-between cursor-pointer rounded-xl bg-ink text-white px-4 py-3 text-xs font-semibold list-none select-none hover:bg-[#2A2A2A] transition-colors">
         <span>▶ Ver tópicos abordados</span>
       </summary>
 
@@ -629,89 +629,12 @@
       </div>
 
       <!-- Grid dos planos -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-7 items-stretch">
-
-        <!-- =========================
-             PLANO 1 — CHECKLIST
-        ========================== -->
-        <div class="bg-white rounded-[26px] border-2 border-[#D8E0EA] shadow-sm p-7 sm:p-10 flex flex-col min-h-[640px]">
-
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-2xl font-extrabold text-[#06163A] leading-tight">
-                Checklist ENEM 2026
-              </h3>
-
-              <p class="mt-2 text-sm sm:text-base text-[#5B6F92]">
-                Checklist prático para organizar seus estudos.
-              </p>
-            </div>
-
-            <span class="shrink-0 rounded-full bg-[#E6F0FB] text-[#315A8A] px-4 py-2 text-sm font-semibold">
-              Básico
-            </span>
-          </div>
-
-          <!-- Preço -->
-          <div class="mt-7">
-            <div class="flex items-end gap-2 flex-wrap">
-              <span class="text-4xl sm:text-5xl font-black text-[#06163A] leading-none">
-                R$ 14,90
-              </span>
-
-              <span class="text-base text-[#5B6F92] mb-1">
-                / único
-              </span>
-            </div>
-          </div>
-
-          <!-- Benefícios -->
-          <ul class="mt-8 space-y-5 text-[#06163A] text-base">
-
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
-              Conteúdos por área
-            </li>
-
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
-              Checklist de redação
-            </li>
-
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
-              Painel simples de progresso
-            </li>
-
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
-              PDF imprimível
-            </li>
-
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
-              Acesso imediato
-            </li>
-
-          </ul>
-
-          <!-- Botão -->
-          <div class="mt-auto pt-10">
-            <a
-              href="https://pay.kiwify.com.br/1IIY8Cm"
-              class="w-full rounded-2xl border-2 border-brand text-brand font-bold text-base py-4 flex items-center justify-center hover:bg-brand hover:text-white transition-colors"
-            >
-              Quero o Checklist
-            </a>
-          </div>
-
-        </div>
-
+      <div class="max-w-xl mx-auto">
 
         <!-- =========================
              PLANO 2 — COMPLETO
         ========================== -->
-        <div class="relative bg-white rounded-[26px] border-2 border-brand shadow-xl shadow-brand/10 p-7 sm:p-10 flex flex-col min-h-[640px]">
+        <div class="relative bg-white rounded-[26px] border-2 border-brand shadow-xl shadow-brand/10 p-7 sm:p-8 flex flex-col">
 
           <!-- Mais escolhido -->
           <div class="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -754,7 +677,7 @@
           </div>
 
           <!-- Benefícios -->
-          <ul class="mt-7 space-y-4 text-[#06163A] text-base">
+          <ul class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4 text-[#06163A] text-base">
 
             <li class="flex items-center gap-3">
               <span class="w-5 h-5 rounded-full border-2 border-[#2EB24A] flex items-center justify-center text-[#2EB24A] text-[11px] font-bold shrink-0">✓</span>
@@ -825,8 +748,19 @@
 
       </div>
 
-    </div>
+</div>
   </section>
+
+  <!-- ============ POP-UP DE TÓPICOS ============ -->
+  <div id="topicos-modal" class="hidden fixed inset-0 z-[100] items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="topicos-modal-title">
+    <div class="absolute inset-0 bg-[#06163A]/75 backdrop-blur-sm" onclick="fecharTopicos()"></div>
+
+    <div class="relative w-full max-w-md max-h-[90vh] overflow-y-auto pt-8">
+      <button type="button" onclick="fecharTopicos()" class="absolute top-0 right-0 z-10 w-10 h-10 rounded-full bg-white text-[#06163A] font-black shadow-lg hover:bg-[#E6F0FB] transition-colors" aria-label="Fechar tópicos">×</button>
+      <h2 id="topicos-modal-title" class="sr-only">Tópicos abordados</h2>
+      <div id="topicos-modal-content"></div>
+    </div>
+  </div>
 
 
   <!-- ============ AVISO INSTITUCIONAL E LEGAL ============ -->
@@ -852,30 +786,6 @@
 
   <script>
     // Contador regressivo — inicia em 01:56:34 e conta até zero
-    (function () {
-      var totalSeconds = 1 * 3600 + 56 * 60 + 34; // 01:56:34
-      var el = document.getElementById('countdown');
-
-      function format(t) {
-        var h = Math.floor(t / 3600);
-        var m = Math.floor((t % 3600) / 60);
-        var s = t % 60;
-        return [h, m, s].map(function (n) { return String(n).padStart(2, '0'); }).join(':');
-      }
-
-      function tick() {
-        if (totalSeconds <= 0) {
-          el.textContent = '00:00:00';
-          clearInterval(timer);
-          return;
-        }
-        totalSeconds -= 1;
-        el.textContent = format(totalSeconds);
-      }
-
-      el.textContent = format(totalSeconds);
-      var timer = setInterval(tick, 1000);
-    })();
 
     // Script para rotacionar automaticamente as técnicas no Mockup do Hero
     const techniques = [
@@ -916,6 +826,44 @@
       cards.forEach((item) => item.classList.remove('selecionado'));
       card.classList.add('selecionado');
     }
+
+    // Pop-up: reaproveita a capa e os tópicos do próprio card selecionado
+    function abrirTopicos(event, botao) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const cardOriginal = botao.closest('.materia-card');
+      const modal = document.getElementById('topicos-modal');
+      const conteudo = document.getElementById('topicos-modal-content');
+      if (!cardOriginal || !modal || !conteudo) return;
+
+      const card = cardOriginal.cloneNode(true);
+      card.removeAttribute('onclick');
+      card.classList.remove('mt-4', 'cursor-pointer', 'selecionado');
+      card.classList.add('w-full');
+
+      const detalhes = card.querySelector('details');
+      const resumo = card.querySelector('summary');
+      if (detalhes) detalhes.open = true;
+      if (resumo) resumo.remove();
+
+      conteudo.replaceChildren(card);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function fecharTopicos() {
+      const modal = document.getElementById('topicos-modal');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') fecharTopicos();
+    });
 
   </script>
 
